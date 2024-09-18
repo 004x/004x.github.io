@@ -139,8 +139,8 @@
     <script>
         function updateCountdown() {
             const now = new Date();
-            let offTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 18, 0, 0); // 下班时间是18:00
-            let nextWorkDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 8, 0, 0); // 第二天早上8点上班
+            let offTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 18, 0, 0); // 下班时间保持18:00
+            let nextWorkDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 9, 0, 0); // 第二天早上9点上班
 
             // 如果当前时间已经过了今天的下班时间，设置为明天的下班时间
             if (now > offTime) {
@@ -149,7 +149,7 @@
 
             let targetTime, message;
             if (now.getHours() >= 18 || now.getHours() < 9) {
-                // 如果当前时间是晚上6点到早上8点之间
+                // 如果当前时间是晚上6点到早上9点之间
                 targetTime = nextWorkDay;
                 if (now > nextWorkDay) {
                     nextWorkDay.setDate(nextWorkDay.getDate() + 1);
@@ -164,7 +164,7 @@
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            if (now.getHours() >= 18 || now.getHours() < 8) {
+            if (now.getHours() >= 18 || now.getHours() < 9) {
                 message = `小姐姐，恭喜你又熬过了一天！距离上班还有 <span>${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}</span>`;
             } else {
                 message = `小姐姐你还有 <span>${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}</span> 下班哦！`;
